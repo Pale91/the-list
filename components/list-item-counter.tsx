@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import { collection, doc, getDocs } from "firebase/firestore";
-import { db } from '@/infrastructure/firebase';
+import { db } from '../infrastructure/firebase';
 
 export const ListItemCounter = () => {
     const [items, setItems] = React.useState<any[] | undefined>();
