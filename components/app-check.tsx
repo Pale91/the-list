@@ -8,7 +8,7 @@ export const AppCheck = ({ onInitialized }: { onInitialized: () => void }) => {
         // Create a ReCaptchaEnterpriseProvider instance using your reCAPTCHA Enterprise
         // site key and pass it to initializeAppCheck().
         const appCheck = initializeAppCheck(app, {
-            provider: new ReCaptchaEnterpriseProvider('6LdSZFApAAAAAIHXhOlbLTbNk-frTByqG5d0WigQ'),
+            provider: new ReCaptchaEnterpriseProvider('6Ld-_VMpAAAAAAMEued-pDNGSs3Tp-KBygk0ePmA'),
             isTokenAutoRefreshEnabled: true // Set to true to allow auto-refresh.
         });
 
