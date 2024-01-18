@@ -1,4 +1,4 @@
-import { UserInfo, signInWithPopup } from 'firebase/auth';
+import { UserInfo, signInWithPopup, signOut } from 'firebase/auth';
 import React from 'react';
 import { useUser } from '../providers/auth-provider';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
@@ -20,5 +20,6 @@ export const LoginInfo = () => {
 
     return <div>
         {user.displayName}
+        <button onClick={() => signOut(auth)}>Logout</button>
     </div>
 }
