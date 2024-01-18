@@ -12,7 +12,8 @@
     "firebase": "^10.7.1",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-social-login-buttons": "^3.9.1"
   },
   "devDependencies": {
     "@types/react": "18.2.47",

@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -31,3 +32,7 @@ export const activateAppCheck = () => {
     isTokenAutoRefreshEnabled: true // Set to true to allow auto-refresh.
   });
 }
+
+export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
+export const facebookProvider = new FacebookAuthProvider();
