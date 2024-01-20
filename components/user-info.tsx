@@ -1,11 +1,11 @@
 import { UserInfo, signInWithPopup, signOut } from 'firebase/auth';
 import React from 'react';
-import { useUser } from '../providers/auth-provider';
+import { AppUserInfo, useUser } from '../providers/auth-provider';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 import { auth, facebookProvider, googleProvider } from '../infrastructure/firebase';
 
 export const LoginInfo = () => {
-    const user: UserInfo | undefined = useUser();
+    const user: AppUserInfo | undefined = useUser();
 
     if (user === undefined) {
         return (<div>
@@ -19,7 +19,7 @@ export const LoginInfo = () => {
     }
 
     return <div>
-        {user.displayName}
+        {user.displayName} ({user.isAdmin ? "Admin" : "User"})
         <button onClick={() => signOut(auth)}>Logout</button>
     </div>
 }
