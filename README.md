@@ -35,4 +35,10 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-# ENV VARIABLes
+# ENV VARIABLES
+
+Crate `.env` file with following variables
+
+- `NEXTAUTH_URL` - URL of local dev server
+- `GOOGLE_OAUTH_CLIENT_ID`
+- `GOOGLE_OAUTH_CLIENT_SECRET`
