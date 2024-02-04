@@ -42,3 +42,6 @@ Crate `.env` file with following variables
 - `NEXTAUTH_URL` - URL of local dev server
 - `GOOGLE_OAUTH_CLIENT_ID`
 - `GOOGLE_OAUTH_CLIENT_SECRET`
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_CLIENT_EMAIL`
+- `FIREBASE_PRIVATE_KEY`
