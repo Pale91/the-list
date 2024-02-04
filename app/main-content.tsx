@@ -2,7 +2,7 @@ import React from 'react';
 import { ListItemCounter } from '../components/list-item-counter';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
-import { authOptions } from './api/auth/[...nextauth]/route';
+import { authOptions } from './api/auth/[...nextauth]/auth-options';
 
 export const MainContent = async () => {
   const session = await getServerSession(authOptions);
