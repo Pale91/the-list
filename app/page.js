@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image'
+import Image from 'next/image';
 import { ListItemCounter } from '../components/list-item-counter';
 import { AppCheck } from '../components/app-check';
 import { MainContent } from './main-content';
@@ -114,5 +114,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
