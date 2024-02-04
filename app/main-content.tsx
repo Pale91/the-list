@@ -7,7 +7,6 @@ import { authOptions } from './api/auth/[...nextauth]/auth-options';
 export const MainContent = async () => {
   const session = await getServerSession(authOptions);
 
-  console.log(session);
   const userInfo =
     session?.user !== undefined ? (
       <div>
