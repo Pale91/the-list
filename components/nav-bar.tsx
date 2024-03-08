@@ -43,7 +43,7 @@ export const NavBar = ({ children }: React.PropsWithChildren) => {
           <div className="navbar-start mx-2">The List</div>
           <div className="navbar-center flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
-            <ListItems />
+              <ListItems />
             </ul>
           </div>
           <div className="navbar-end">
