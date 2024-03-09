@@ -18,7 +18,7 @@ export default async function Home() {
         className="object-cover"
         src={imgUrlDesktop}
         fill
-        sizes='100%'
+        sizes="100%"
         priority
       />
     </div>
