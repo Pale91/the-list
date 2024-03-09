@@ -1,7 +1,27 @@
 import React from 'react';
-import Image from 'next/image';
-import { MainContent } from './main-content';
+import { storage } from '../infrastructure/firebase';
+import { ref, getDownloadURL } from 'firebase/storage';
 
-export default function Home() {
-  return <div>Content</div>;
+export default async function Home() {
+  const imgUrlDesktop = await getDownloadURL(
+    ref(storage, 'landing-dunas-side.jpg')
+  );
+  const imgUrlMobile = await getDownloadURL(
+    ref(storage, 'landing-dunas-back.jpg')
+  );
+
+  return (
+    <div className="w-full">
+      <img
+        alt={'landing-dunas-back'}
+        className="hidden md:block object-fill"
+        src={imgUrlDesktop}
+      />
+      <img
+        alt={'landing-dunas-back'}
+        className="block md:hidden object-fill"
+        src={imgUrlMobile}
+      />
+    </div>
+  );
 }
