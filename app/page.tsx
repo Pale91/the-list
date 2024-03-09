@@ -1,6 +1,7 @@
 import React from 'react';
 import { storage } from '../infrastructure/firebase';
 import { ref, getDownloadURL } from 'firebase/storage';
+import Image from 'next/image';
 
 export default async function Home() {
   const imgUrlDesktop = await getDownloadURL(
@@ -11,16 +12,14 @@ export default async function Home() {
   );
 
   return (
-    <div className="w-full">
-      <img
+    <div className="w-full relative h-96">
+      <Image
         alt={'landing-dunas-back'}
-        className="hidden md:block object-fill"
+        className="object-cover"
         src={imgUrlDesktop}
-      />
-      <img
-        alt={'landing-dunas-back'}
-        className="block md:hidden object-fill"
-        src={imgUrlMobile}
+        fill
+        sizes="100%"
+        priority
       />
     </div>
   );
