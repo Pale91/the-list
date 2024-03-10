@@ -24,7 +24,12 @@ export async function UserMenu() {
         className="btn btn-ghost btn-circle avatar"
       >
         <div className="w-10 rounded-full">
-          <Image alt="user-avatar" src={userSession.user.image} fill />
+          <Image
+            alt="user-avatar"
+            src={userSession.user.image}
+            className="rounded-full"
+            fill
+          />
         </div>
       </div>
       <ul
