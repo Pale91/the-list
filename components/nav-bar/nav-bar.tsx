@@ -1,5 +1,6 @@
 import React from 'react';
-import { Bars3Icon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon } from '@heroicons/react/24/outline';
+import { UserMenu } from './user-menu';
 
 const ListItems = () => (
   <>
@@ -47,7 +48,7 @@ export const NavBar = ({ children }: React.PropsWithChildren) => {
             </ul>
           </div>
           <div className="navbar-end">
-            <UserCircleIcon className="w-6 h-6 mx-2" />
+            <UserMenu />
           </div>
         </div>
         {children}
