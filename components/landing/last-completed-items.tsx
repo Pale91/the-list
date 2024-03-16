@@ -12,8 +12,8 @@ export async function LastCompletedItems() {
   );
 
   return (
-    <section>
-      <h2>Completed</h2>
+    <section className=''>
+      <h2 className='mt-7 mb-5 text-white text-4xl'>Fulfilled</h2>
       <div className="grid grid-cols-1 md:grid-cols-2">
         <ListItemCard
           imageUrl={scubaDivingUrl}

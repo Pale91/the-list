@@ -1,9 +1,10 @@
-import { Inter } from 'next/font/google';
+import { Inter, Lexend } from 'next/font/google';
 import './globals.css';
 import { NavBar } from '../components/nav-bar/nav-bar';
 import clsx from 'clsx';
 
 const inter = Inter({ subsets: ['latin'] });
+const lexend = Lexend({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="dark">
-      <body className={clsx(inter.className, 'max-w-screen-xl', 'mx-auto')}>
+      <body className={clsx(lexend.className, 'max-w-screen-xl', 'mx-auto')}>
         <NavBar>{children}</NavBar>
       </body>
     </html>

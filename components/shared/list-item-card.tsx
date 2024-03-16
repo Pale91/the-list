@@ -15,8 +15,8 @@ export function ListItemCard({
   numberInList
 }: ListItemCardProps) {
   return (
-    <div className="card w-80 bg-base-100 shadow-xl">
-      <figure className="relative w-80 h-80">
+    <div className="card bg-white w-80 shadow-xl p-px">
+      <figure className="relative w-full h-80">
         <Image
           src={imageUrl}
           alt={`#${numberInList} ${name}`}
@@ -24,7 +24,7 @@ export function ListItemCard({
           className="object-fill"
         />
       </figure>
-      <div className="card-body">
+      <div className="card-body text-neutral-900">
         <h2 className="card-title">
           #{numberInList} {name}
         </h2>
