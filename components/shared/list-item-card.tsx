@@ -1,30 +1,34 @@
 import Image from 'next/image';
 import { MapPinIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
 
 interface ListItemCardProps {
   imageUrl: string;
   numberInList: number;
   location: string;
   name: string;
+  className?: string;
 }
 
 export function ListItemCard({
   imageUrl,
   location,
   name,
-  numberInList
+  numberInList,
+  className
 }: ListItemCardProps) {
   return (
-    <div className="card w-80 bg-base-100 shadow-xl">
-      <figure className="relative w-80 h-80">
+    <div className={clsx(className, 'card bg-white w-80 shadow-xl p-px')}>
+      <figure className="relative w-full h-80">
         <Image
           src={imageUrl}
           alt={`#${numberInList} ${name}`}
           fill
           className="object-fill"
+          sizes="100%"
         />
       </figure>
-      <div className="card-body">
+      <div className="card-body text-neutral-900">
         <h2 className="card-title">
           #{numberInList} {name}
         </h2>
