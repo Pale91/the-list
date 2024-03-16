@@ -38,7 +38,9 @@ export async function LastCompletedItems() {
           numberInList={2}
         />
       </div>
-      <Link href={''} className='btn btn-outline my-5 mx-auto'>View More</Link>
+      <Link href={''} className="btn btn-outline my-5 mx-auto">
+        View More
+      </Link>
     </section>
   );
 }
