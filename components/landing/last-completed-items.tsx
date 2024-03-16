@@ -13,7 +13,7 @@ export async function LastCompletedItems() {
   );
 
   return (
-    <section className="">
+    <section className="w-full">
       <h2 className="mt-7 mb-5 text-white text-4xl">Fulfilled</h2>
       <div className="flex m-auto gap-4 overflow-auto">
         <ListItemCard
@@ -38,7 +38,7 @@ export async function LastCompletedItems() {
           numberInList={2}
         />
       </div>
-      <Link href={''} className='btn btn-outline m-5'>View More</Link>
+      <Link href={''} className='btn btn-outline my-5 mx-auto'>View More</Link>
     </section>
   );
 }
