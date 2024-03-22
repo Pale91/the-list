@@ -32,6 +32,7 @@ export function HorizontalItemList({
       <div className="flex m-auto gap-4 overflow-auto">
         {items.map((item, index) => (
           <ListItemCard
+            key={`${item.name}-${item.numberInList}`}
             className={clsx(
               'flex-none',
               index === 0 && 'ml-auto',

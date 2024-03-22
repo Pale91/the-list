@@ -7,9 +7,9 @@ export default async function Home() {
   return (
     <>
       <Banner />
-      <div className='p-3'>
+      <div className="p-3">
         <WhatIsComing />
-        <div className='mt-5'></div>
+        <div className="mt-5"></div>
         <LastCompletedItems />
       </div>
     </>
