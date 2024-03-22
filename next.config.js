@@ -2,11 +2,6 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 
 const nextConfig = (phase) => {
-  const devAllowedOrigins = [
-    'super-duper-umbrella-r7vqwpp5q9whp4r5-3000.app.github.dev',
-    'localhost:3000'
-  ];
-
   return {
     images: {
       remotePatterns: [
