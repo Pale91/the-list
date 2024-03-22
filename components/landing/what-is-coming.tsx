@@ -1,6 +1,6 @@
 import { storage } from '@/infrastructure/firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
-import { HorizontalItemList } from '../shared/horizontal-item-list';
+import { HorizontalItemList, ListItem } from '../shared/horizontal-item-list';
 
 export async function WhatIsComing() {
   const santoriniUrl = await getDownloadURL(
