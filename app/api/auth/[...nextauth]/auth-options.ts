@@ -2,6 +2,7 @@ import { AuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import { FirestoreAdapter } from '@auth/firebase-adapter';
 import { cert } from 'firebase-admin/app';
+import { Roles } from '@/infrastructure/roles';
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -16,7 +17,7 @@ export const authOptions: AuthOptions = {
           email: profile.email,
           image: profile.picture,
           id: profile.sub,
-          role: profile.role ?? 'user'
+          role: profile.role ?? Roles.USER
         };
       }
     })
