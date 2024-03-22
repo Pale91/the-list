@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com'
       }
     ]
+  },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['super-duper-umbrella-r7vqwpp5q9whp4r5-3000.app.github.dev', 'localhost:3000'],
+    }
   }
 };
 
