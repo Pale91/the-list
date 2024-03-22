@@ -39,7 +39,7 @@ export async function UserMenu() {
       >
         <li>
           <SignOutButton />
-          {isAdmin(userSession.user.role) && <Link href={''}>Create Item</Link>}
+          {isAdmin(userSession.user.role) && <Link href={'/desires/create'}>Create Item</Link>}
         </li>
       </ul>
     </div>
