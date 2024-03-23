@@ -8,6 +8,6 @@ export async function createItem(formData: FormData) {
     plannedDate: new Date(formData.get('plannedDate').toString())
   };
 
-  addItem(params);
+  // addItem(params);
   console.log('Item added');
 }
