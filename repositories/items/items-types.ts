@@ -9,27 +9,32 @@ export enum ItemState {
 
 const itemStateSchema = z.nativeEnum(ItemState);
 
-export const ItemSchema = z.object({
+const ItemSchema = z.object({
   id: z.string(),
   name: z.string().max(30, 'Name cannot be exceed 30 characters long'),
   description: z
     .string()
     .max(50, 'Description cannot be exceed 50 characters')
-    .optional(),
+    .nullable()
+    .default(null),
   location: z
     .string()
     .max(30, 'Location cannot be exceed 30 characters long')
-    .optional(),
+    .nullable()
+    .default(null),
   locationLink: z
     .string()
     .url('Location link must be a valid URL including http or https')
-    .optional(),
+    .nullable()
+    .default(null),
   state: itemStateSchema,
-  plannedDate: z.date().optional(),
+  plannedDate: z.date().nullable().default(null),
   creationDate: z.date(),
-  completionDate: z.date().optional(),
-  referUserId: z.string().optional(),
+  completionDate: z.date().nullable().default(null),
+  referUserId: z.string().nullable().default(null),
   votes: z.number().default(0)
 });
 
 export type Item = z.infer<typeof ItemSchema>;
+
+export default ItemSchema;

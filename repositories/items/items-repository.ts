@@ -1,5 +1,5 @@
 import { doc, collection, setDoc, addDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { db } from '../../infrastructure/firebase';
 import { Item } from './items-types';
 
 const collectionName: string = 'items';
