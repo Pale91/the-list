@@ -45,3 +45,10 @@ Crate `.env` file with following variables
 - `FIREBASE_PROJECT_ID`
 - `FIREBASE_CLIENT_EMAIL`
 - `FIREBASE_PRIVATE_KEY`
+
+# Zod generation
+ To generate zod schema from ts interface
+
+ ```
+ npx ts-to-zod <input> <output>
+ ```

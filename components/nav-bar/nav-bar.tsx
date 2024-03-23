@@ -42,7 +42,9 @@ export const NavBar = ({ children }: React.PropsWithChildren) => {
               <Bars3Icon className="w-6 h-6" />
             </label>
           </div>
-          <Link href={'/'} className="navbar-start mx-2 dark:text-white">The List</Link>
+          <Link href={'/'} className="navbar-start mx-2 dark:text-white">
+            The List
+          </Link>
           <div className="navbar-center flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
               <ListItems />

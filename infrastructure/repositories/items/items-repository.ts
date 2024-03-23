@@ -1,11 +1,12 @@
 import { doc, collection, setDoc, addDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../../firebase';
+import { Item } from './items-types';
 
 const collectionName: string = 'items';
 
-export async function addItem(params: { name: string; date?: Date }) {
+export async function addItem(item: Omit<Item, 'id'>) {
   const itemsCollection = collection(db, collectionName);
   await addDoc(itemsCollection, {
-    ...params
+    ...item
   });
 }

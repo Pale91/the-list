@@ -25,12 +25,16 @@ export async function UserMenu() {
         className="btn btn-ghost btn-circle avatar"
       >
         <div className="w-10 rounded-full">
-          <Image
-            alt="user-avatar"
-            src={userSession.user.image}
-            className="rounded-full"
-            fill
-          />
+          {userSession.user.image ? (
+            <Image
+              alt="user-avatar"
+              src={userSession.user.image}
+              className="rounded-full"
+              fill
+            />
+          ) : (
+            <UserCircleIcon className="w-6 h-6 mx-2" />
+          )}
         </div>
       </div>
       <ul
@@ -39,7 +43,9 @@ export async function UserMenu() {
       >
         <li>
           <SignOutButton />
-          {isAdmin(userSession.user.role) && <Link href={'/desires/create'}>Create Item</Link>}
+          {isAdmin(userSession.user.role) && (
+            <Link href={'/desires/create'}>Create Item</Link>
+          )}
         </li>
       </ul>
     </div>
