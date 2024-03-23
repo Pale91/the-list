@@ -1,4 +1,5 @@
 import Input from '@/components/shared/input';
+import { Textarea } from '@/components/shared/textarea';
 import { createItem } from '@/services/list-service';
 
 export default function CreateDesire() {
@@ -13,9 +14,12 @@ export default function CreateDesire() {
           <div className="lg:grid lg:grid-cols-2 gap-2">
             <Input label="Name" name={'name'} required />
 
-            <Input label="Description" name={'description'} />
-
             <Input type="date" name={'plannedDate'} label="Planned Date" />
+            <Textarea
+              label="Description"
+              name="description"
+              containerClassName="col-span-2"
+            />
 
             <input
               type="submit"
