@@ -5,6 +5,9 @@ import { cert } from 'firebase-admin/app';
 import { Roles } from '@/infrastructure/roles';
 
 export const authOptions: AuthOptions = {
+  session: {
+    strategy: 'jwt'
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_OAUTH_CLIENT_ID!,
@@ -31,9 +34,17 @@ export const authOptions: AuthOptions = {
     })
   }),
   callbacks: {
-    session({ session, user }) {
-      session.user.role = user.role;
+    session({ session, token }) {
+      console.log('session', JSON.stringify(token));
+      session.user.role = token.role as string;
       return session;
+    },
+    jwt({ token, user }) {
+      if (user) {
+        console.log('jwt', JSON.stringify(user));
+        token.role = user.role;
+      }
+      return token;
     }
   },
   // KEEP IN SYNC WITH middleware.ts

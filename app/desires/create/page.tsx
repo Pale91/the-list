@@ -4,6 +4,8 @@ import { Textarea } from '@/components/shared/textarea';
 import { createItem } from '@/services/list-service';
 import { getServerSession } from 'next-auth';
 
+export const dynamic = 'force-dynamic';
+
 export default async function CreateDesire() {
   const userSession = await getServerSession(authOptions);
   const isAdmin = userSession && userSession.user.role === 'admin';
