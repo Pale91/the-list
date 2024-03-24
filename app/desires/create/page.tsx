@@ -1,6 +1,7 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
 import Input from '@/components/shared/input';
 import { Textarea } from '@/components/shared/textarea';
+import { isUserAdmin } from '@/infrastructure/roles';
 import { createActivity } from '@/services/activity-service';
 import { getServerSession } from 'next-auth';
 
@@ -8,7 +9,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function CreateDesire() {
   const userSession = await getServerSession(authOptions);
-  const isAdmin = userSession && userSession.user.role === 'admin';
+  const isAdmin = isUserAdmin(userSession?.user.role);
 
   return (
     <main className="p-3">

@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { SignOutButton } from './signout-button';
 import Image from 'next/image';
-import { isAdmin } from '@/infrastructure/roles';
+import { isUserAdmin } from '@/infrastructure/roles';
 
 export async function UserMenu() {
   const userSession = await getServerSession(authOptions);
@@ -43,7 +43,7 @@ export async function UserMenu() {
       >
         <li>
           <SignOutButton />
-          {isAdmin(userSession.user.role) && (
+          {isUserAdmin(userSession.user.role) && (
             <Link href={'/desires/create'}>Create Item</Link>
           )}
         </li>
