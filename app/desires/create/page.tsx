@@ -1,7 +1,7 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
 import Input from '@/components/shared/input';
 import { Textarea } from '@/components/shared/textarea';
-import { createItem } from '@/services/list-service';
+import { createActivity } from '@/services/activity-service';
 import { getServerSession } from 'next-auth';
 
 export const dynamic = 'force-dynamic';
@@ -15,7 +15,7 @@ export default async function CreateDesire() {
       <header className="dark:text-white text-2xl">Add Desire</header>
       <section className="">
         <form
-          action={createItem}
+          action={createActivity}
           className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           <div className="lg:grid lg:grid-cols-2 gap-2">

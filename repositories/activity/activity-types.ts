@@ -1,15 +1,15 @@
 import { z } from 'zod';
 
-export enum ItemState {
+export enum ActivityState {
   COMPLETED = 'completed',
   PENDING = 'pending',
   IN_REVIEW = 'inReview',
   REJECTED = 'rejected'
 }
 
-const itemStateSchema = z.nativeEnum(ItemState);
+const activityStateSchema = z.nativeEnum(ActivityState);
 
-const ItemSchema = z.object({
+const ActivitySchema = z.object({
   id: z.string(),
   name: z.string().max(30, 'Name cannot be exceed 30 characters long'),
   description: z
@@ -27,7 +27,7 @@ const ItemSchema = z.object({
     .url('Location link must be a valid URL including http or https')
     .nullable()
     .default(null),
-  state: itemStateSchema,
+  state: activityStateSchema,
   plannedDate: z.date().nullable().default(null),
   creationDate: z.date(),
   completionDate: z.date().nullable().default(null),
@@ -35,6 +35,6 @@ const ItemSchema = z.object({
   votes: z.number().default(0)
 });
 
-export type Item = z.infer<typeof ItemSchema>;
+export type Activity = z.infer<typeof ActivitySchema>;
 
-export default ItemSchema;
+export default ActivitySchema;
