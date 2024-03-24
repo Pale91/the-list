@@ -35,5 +35,7 @@ export const authOptions: AuthOptions = {
       session.user.role = user.role;
       return session;
     }
-  }
+  },
+  // KEEP IN SYNC WITH middleware.ts
+  pages: { signIn: '/auth/signin' }
 };

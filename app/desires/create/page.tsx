@@ -1,8 +1,13 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
 import Input from '@/components/shared/input';
 import { Textarea } from '@/components/shared/textarea';
 import { createItem } from '@/services/list-service';
+import { getServerSession } from 'next-auth';
 
-export default function CreateDesire() {
+export default async function CreateDesire() {
+  const userSession = await getServerSession(authOptions);
+  const isAdmin = userSession && userSession.user.role === 'admin';
+
   return (
     <main className="p-3">
       <header className="dark:text-white text-2xl">Add Desire</header>
@@ -15,10 +20,11 @@ export default function CreateDesire() {
             <Input label="Name" name={'name'} required />
 
             <Input type="date" name={'plannedDate'} label="Planned Date" />
+
             <Textarea
               label="Description"
               name="description"
-              containerClassName="col-span-2"
+              containerClassName="max-w-xs lg:max-w-full col-span-2"
             />
 
             <input
