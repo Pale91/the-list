@@ -4,6 +4,6 @@ export enum Roles {
   USER = 'user'
 }
 
-export function isAdmin(role: string) {
-  return role === Roles.ADMIN || role === Roles.OWNER;
+export function isUserAdmin(role?: string) {
+  return role !== undefined && (role === Roles.ADMIN || role === Roles.OWNER);
 }

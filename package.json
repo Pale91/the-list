@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "npx prettier -c ."
+    "prettier": "npx prettier -c .",
+    "zod": "ts-to-zod --"
   },
   "dependencies": {
     "@auth/firebase-adapter": "^1.2.1",
@@ -19,7 +20,9 @@
     "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
-    "react-social-login-buttons": "^3.9.1"
+    "react-social-login-buttons": "^3.9.1",
+    "ts-to-zod": "^3.7.3",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "18.2.47",
