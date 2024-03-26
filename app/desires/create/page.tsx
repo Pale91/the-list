@@ -15,6 +15,8 @@ export default function CreateDesire() {
   const { formState, onChange } = useFormUpdater();
   const imageRef = useRef<HTMLInputElement>(null);
 
+  // TODO: Free memory URL.revokeObjectURL(output.src);
+  // TODO: adjust to contain image with aspect ratio diff than 1:1
   const loadedImage = useMemo(() => {
     if (imageRef.current?.files?.[0] === undefined) {
       return '/default-1x1.jpg';
