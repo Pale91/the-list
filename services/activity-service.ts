@@ -5,12 +5,12 @@ import ActivitySchema, {
   Activity,
   ActivityState
 } from '@/repositories/activity/activity-types';
-import { ZodError } from 'zod';
+import { ZodError, ZodFormattedError } from 'zod';
 
 const CreateActivitySchema = ActivitySchema.omit({ id: true });
 
 export async function createActivity(
-  currentState: ZodError<Activity>['issues'] | undefined,
+  currentState: ZodFormattedError<Activity> | undefined,
   formData: FormData
 ) {
   console.log('planned date', formData.get('plannedDate'));
@@ -29,7 +29,7 @@ export async function createActivity(
 
   if (!result.success) {
     console.log('error server ', JSON.stringify(result.error, null, 2));
-    return result.error.issues;
+    return result.error.format();
   }
 
   await addActivity(result.data);

@@ -23,25 +23,42 @@ export default function CreateDesire() {
           className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           <div className="lg:grid lg:grid-cols-2 gap-2">
-            <Input label="Name *" name={'name'} required />
+            <Input
+              label="Name *"
+              name={'name'}
+              required
+              error={errors?.name?._errors[0]}
+              containerClassName="max-w-xs lg:max-w-full col-span-2"
+            />
 
             <Input
               label="Location Name"
               name="location"
               placeholder="e.g. Maldives"
+              error={errors?.location?._errors[0]}
             />
 
             <Input
               label="Location Link"
               name="locationLink"
-              containerClassName="max-w-xs lg:max-w-full col-span-2"
               placeholder="e.g. https://maps.google.com/..."
+              error={errors?.locationLink?._errors[0]}
+            />
+
+            <Input
+              label="Picture"
+              name="file"
+              type="file"
+              className="file-input file-input-bordered w-full"
+              containerClassName="max-w-xs lg:max-w-full col-span-2"
+              error={errors?.locationLink?._errors[0]}
             />
 
             <Textarea
               label="Description"
               name="description"
               containerClassName="max-w-xs lg:max-w-full col-span-2"
+              error={errors?.description?._errors[0]}
             />
 
             <input
