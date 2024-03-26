@@ -19,7 +19,7 @@ export default function Input({
       <input
         {...inputProps}
         type={type ?? 'text'}
-        className="input input-bordered w-full max-w-xs"
+        className="input input-bordered w-full"
       />
     </label>
   );

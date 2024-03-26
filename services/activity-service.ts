@@ -5,13 +5,17 @@ import ActivitySchema, {
   Activity,
   ActivityState
 } from '@/repositories/activity/activity-types';
+import { ZodError } from 'zod';
 
 const CreateActivitySchema = ActivitySchema.omit({ id: true });
 
-export async function createActivity(formData: FormData) {
+export async function createActivity(
+  currentState: ZodError<Activity>['issues'] | undefined,
+  formData: FormData
+) {
   console.log('planned date', formData.get('plannedDate'));
 
-  const newItem: Omit<Activity, 'id'> = CreateActivitySchema.parse({
+  const result = CreateActivitySchema.safeParse({
     name: formData.get('name'),
     description: formData.get('description'),
     location: formData.get('location'),
@@ -23,6 +27,11 @@ export async function createActivity(formData: FormData) {
     referUserId: null
   });
 
-  addActivity(newItem);
+  if (!result.success) {
+    console.log('error server ', JSON.stringify(result.error, null, 2));
+    return result.error.issues;
+  }
+
+  await addActivity(result.data);
   console.log('Item added');
 }
