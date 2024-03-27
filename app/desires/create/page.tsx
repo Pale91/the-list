@@ -90,11 +90,7 @@ export default function CreateDesire() {
               error={errors?.description?._errors[0]}
             />
 
-            <input
-              type="submit"
-              className="btn btn-primary col-span-2"
-              value="Add"
-            />
+            <SubmitButton />
           </div>
           <div className="hidden md:flex flex-col items-center">
             <h1>Preview</h1>
@@ -108,5 +104,16 @@ export default function CreateDesire() {
         </form>
       </section>
     </main>
+  );
+}
+
+function SubmitButton() {
+  const status = useFormStatus();
+
+  return (
+    <button type="submit" className="btn btn-primary col-span-2">
+      {status.pending && <span className="loading loading-spinner"></span>}
+      Add
+    </button>
   );
 }
