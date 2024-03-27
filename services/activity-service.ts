@@ -50,7 +50,7 @@ export async function createActivity(
     completionDate: null,
     creationDate: new Date(),
     referUserId: null,
-    picture: formData.get('file')
+    picture: formData.get('picture')
   });
 
   if (!result.success) {

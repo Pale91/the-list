@@ -11,19 +11,19 @@ import { useFormState, useFormStatus } from 'react-dom';
 export const dynamic = 'force-dynamic';
 const defaultImage = '/default-1x1.jpg';
 
+// TODO: PREVENT XSS
 export default function CreateDesire() {
   const [errors, dispatch] = useFormState(createActivity, undefined);
   const { formState, onChange } = useFormUpdater();
   const imageRef = useRef<HTMLInputElement>(null);
 
-  // TODO: PREVENT XSS
   const loadedImage = useMemo(() => {
     if (imageRef.current?.files?.[0] === undefined) {
       return defaultImage;
     }
 
     return URL.createObjectURL(imageRef.current?.files?.[0]);
-  }, [formState['file']]);
+  }, [formState['picture']]);
 
   useEffect(() => {
     if (imageRef.current === undefined || imageRef.current === null) {
@@ -74,7 +74,7 @@ export default function CreateDesire() {
 
             <Input
               label="Picture"
-              name="file"
+              name="picture"
               type="file"
               className="file-input file-input-bordered w-full"
               containerClassName="max-w-xs lg:max-w-full col-span-2"
