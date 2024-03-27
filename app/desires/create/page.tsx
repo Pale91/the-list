@@ -5,25 +5,40 @@ import Input from '@/components/shared/input';
 import { ListItemCard } from '@/components/shared/list-item-card';
 import { Textarea } from '@/components/shared/textarea';
 import { createActivity } from '@/services/activity-service';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 
 export const dynamic = 'force-dynamic';
+const defaultImage = '/default-1x1.jpg';
 
 export default function CreateDesire() {
   const [errors, dispatch] = useFormState(createActivity, undefined);
   const { formState, onChange } = useFormUpdater();
   const imageRef = useRef<HTMLInputElement>(null);
 
-  // TODO: Free memory URL.revokeObjectURL(output.src);
-  // TODO: adjust to contain image with aspect ratio diff than 1:1
+  // TODO: PREVENT XSS
   const loadedImage = useMemo(() => {
     if (imageRef.current?.files?.[0] === undefined) {
-      return '/default-1x1.jpg';
+      return defaultImage;
     }
 
     return URL.createObjectURL(imageRef.current?.files?.[0]);
   }, [formState['file']]);
+
+  useEffect(() => {
+    if (imageRef.current === undefined || imageRef.current === null) {
+      return;
+    }
+
+    imageRef.current.onload = () => {
+      if (
+        imageRef.current?.src !== undefined &&
+        imageRef.current?.src !== defaultImage
+      ) {
+        URL.revokeObjectURL(imageRef.current?.src);
+      }
+    };
+  }, [imageRef.current]);
 
   return (
     <main className="p-3">
@@ -58,12 +73,12 @@ export default function CreateDesire() {
             />
 
             <Input
-              label="Picture *"
+              label="Picture"
               name="file"
               type="file"
               className="file-input file-input-bordered w-full"
               containerClassName="max-w-xs lg:max-w-full col-span-2"
-              required
+              accept="image/*"
               ref={imageRef}
             />
 

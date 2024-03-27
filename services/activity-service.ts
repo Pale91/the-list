@@ -19,7 +19,7 @@ export async function createActivity(
     name: formData.get('name'),
     description: formData.get('description'),
     location: formData.get('location'),
-    locationLink: formData.get('locationLink'),
+    locationLink: formData.get('locationLink') || null,
     state: ActivityState.PENDING,
     plannedDate: formData.get('plannedDate') || null,
     completionDate: null,
