@@ -10,6 +10,7 @@ import ActivitySchema, {
   Activity,
   ActivityState
 } from '@/repositories/activity/activity-types';
+import { uploadImage } from '@/repositories/activity/files-repository';
 import { getServerSession } from 'next-auth';
 import { ZodFormattedError, z } from 'zod';
 
@@ -30,7 +31,6 @@ const CreateActivitySchema = ActivitySchema.omit({
           return true;
         }
 
-        console.log('file name', file.name);
         return await validateFileFormat(file, ...supportedFileTypes);
       },
       {
@@ -66,7 +66,13 @@ export async function createActivity(
     return result.error.format();
   }
 
+  let imageName: string | null = null;
+  if (result.data.picture !== undefined) {
+    imageName = await uploadImage(result.data.picture);
+  }
+
   const { picture, ...itemData } = result.data;
+  itemData.image = imageName;
 
   await addActivity(itemData);
   console.log('Item added');
