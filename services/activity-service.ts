@@ -18,7 +18,9 @@ const supportedFileTypes: FILE_FORMATS[] = [
   FILE_FORMATS.JPEG
 ];
 
-const CreateActivitySchema = ActivitySchema.omit({ id: true }).extend({
+const CreateActivitySchema = ActivitySchema.omit({
+  id: true
+}).extend({
   picture: z
     .instanceof(File)
     .optional()
@@ -28,6 +30,7 @@ const CreateActivitySchema = ActivitySchema.omit({ id: true }).extend({
           return true;
         }
 
+        console.log('file name', file.name);
         return await validateFileFormat(file, ...supportedFileTypes);
       },
       {

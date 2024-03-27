@@ -32,7 +32,8 @@ const ActivitySchema = z.object({
   creationDate: z.date(),
   completionDate: z.date().nullable().default(null),
   referUserId: z.string().nullable().default(null),
-  votes: z.number().default(0)
+  votes: z.number().default(0),
+  image: z.string().nullable().default(null)
 });
 
 export type Activity = z.infer<typeof ActivitySchema>;

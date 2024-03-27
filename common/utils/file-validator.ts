@@ -5,9 +5,9 @@ export enum FILE_FORMATS {
 
 // List of files magic numbers
 // https://en.wikipedia.org/wiki/List_of_file_signatures
-export const FILE_MAGIC_NUMBERS: { [key in FILE_FORMATS]: string } = {
-  [FILE_FORMATS.PNG]: '89504e47',
-  [FILE_FORMATS.JPEG]: 'ffd8ffe0'
+export const FILE_MAGIC_NUMBERS: { [key in FILE_FORMATS]: string[] } = {
+  [FILE_FORMATS.PNG]: ['89504e47'],
+  [FILE_FORMATS.JPEG]: ['ffd8ffe0', 'ffd8ffdb', 'ffd8ffee', 'ffd8ffe1']
 };
 
 export const validateFileFormat = async (
@@ -27,7 +27,10 @@ export const validateFileFormat = async (
     header += magicNumber[i].toString(16);
   }
 
+  console.log('header', header);
   return allowedFormats.some((format) =>
-    header.startsWith(FILE_MAGIC_NUMBERS[format])
+    FILE_MAGIC_NUMBERS[format].some((magicNumber) =>
+      header.startsWith(magicNumber)
+    )
   );
 };
