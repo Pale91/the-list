@@ -1,5 +1,6 @@
 'use server';
 
+import { authOptions } from '@/app/api/auth/[...nextauth]/auth-options';
 import {
   FILE_FORMATS,
   validateFileFormat
@@ -9,7 +10,8 @@ import ActivitySchema, {
   Activity,
   ActivityState
 } from '@/repositories/activity/activity-types';
-import { ZodError, ZodFormattedError, z } from 'zod';
+import { getServerSession } from 'next-auth';
+import { ZodFormattedError, z } from 'zod';
 
 const supportedFileTypes: FILE_FORMATS[] = [
   FILE_FORMATS.PNG,
@@ -21,8 +23,8 @@ const CreateActivitySchema = ActivitySchema.omit({ id: true }).extend({
     .instanceof(File)
     .optional()
     .refine(
-      async (file: File | undefined) => {
-        if (file === undefined) {
+      async (file: File | undefined | null) => {
+        if (file === undefined || file === null || file.size === 0) {
           return true;
         }
 
@@ -38,7 +40,10 @@ export async function createActivity(
   currentState: ZodFormattedError<Activity> | undefined,
   formData: FormData
 ) {
-  console.log('planned date', formData.get('plannedDate'));
+  const session = await getServerSession(authOptions);
+  if (session?.user === undefined) {
+    throw new Error('User not authenticated');
+  }
 
   const result = await CreateActivitySchema.safeParseAsync({
     name: formData.get('name'),
