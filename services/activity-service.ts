@@ -1,5 +1,9 @@
 'use server';
 
+import {
+  FILE_FORMATS,
+  validateFileFormat
+} from '@/common/utils/file-validator';
 import { addActivity } from '@/repositories/activity/activity-repository';
 import ActivitySchema, {
   Activity,
@@ -7,7 +11,10 @@ import ActivitySchema, {
 } from '@/repositories/activity/activity-types';
 import { ZodError, ZodFormattedError, z } from 'zod';
 
-const supportedFileTypesByBuffer = [];
+const supportedFileTypes: FILE_FORMATS[] = [
+  FILE_FORMATS.PNG,
+  FILE_FORMATS.JPEG
+];
 
 const CreateActivitySchema = ActivitySchema.omit({ id: true }).extend({
   picture: z
@@ -19,21 +26,10 @@ const CreateActivitySchema = ActivitySchema.omit({ id: true }).extend({
           return true;
         }
 
-        // Read the magic number of the file
-        const blobSlice = file.slice(0, 4);
-        const buffer = await blobSlice.arrayBuffer();
-
-        const magicNumber = new Uint8Array(buffer);
-        var header = '';
-        for (var i = 0; i < magicNumber.length; i++) {
-          header += magicNumber[i].toString(16);
-        }
-        console.log('FILE TYPE', header);
-
-        // Add your logic to check the magic number and return true or false accordingly
+        return await validateFileFormat(file, ...supportedFileTypes);
       },
       {
-        message: 'The submitted picture is not a supported file type.'
+        message: `The submitted picture is not a supported file type. ${JSON.stringify(supportedFileTypes)}`
       }
     )
 });

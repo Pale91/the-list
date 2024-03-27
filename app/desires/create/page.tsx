@@ -80,6 +80,7 @@ export default function CreateDesire() {
               containerClassName="max-w-xs lg:max-w-full col-span-2"
               accept="image/*"
               ref={imageRef}
+              error={errors?.picture?._errors[0]}
             />
 
             <Textarea
