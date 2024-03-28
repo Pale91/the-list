@@ -1,4 +1,4 @@
-import { doc, collection, setDoc, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../infrastructure/firebase';
 import { Activity } from './activity-types';
 

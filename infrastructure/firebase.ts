@@ -1,6 +1,10 @@
+// IMPORTANT `import 'server-only'` protects the code from being leaked to the client
+// https://nextjs.org/blog/security-nextjs-server-components-actions#server-only
+import 'server-only';
+
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getStorage } from "firebase/storage";
+import { getStorage } from 'firebase/storage';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

@@ -1,14 +1,9 @@
-import { storage } from '@/infrastructure/firebase';
-import { getDownloadURL, ref } from 'firebase/storage';
 import { HorizontalItemList, ListItem } from '../shared/horizontal-item-list';
+import { getImageUrl } from '@/repositories/activity/files-repository';
 
 export async function WhatIsComing() {
-  const santoriniUrl = await getDownloadURL(
-    ref(storage, 'santorini-greece/santorini-1x1.jpg')
-  );
-  const milosUrl = await getDownloadURL(
-    ref(storage, 'milos-greece/milos-1x1.jpg')
-  );
+  const santoriniUrl = await getImageUrl('santorini-greece/santorini-1x1.jpg');
+  const milosUrl = await getImageUrl('milos-greece/milos-1x1.jpg');
 
   const items: ListItem[] = [
     {
