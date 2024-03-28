@@ -62,7 +62,6 @@ export async function createActivity(
   });
 
   if (!result.success) {
-    console.log('error server ', JSON.stringify(result.error, null, 2));
     return result.error.format();
   }
 
@@ -73,6 +72,7 @@ export async function createActivity(
 
   const { picture, ...itemData } = result.data;
   itemData.image = imageName;
+  itemData.referUserId = session.user.id;
 
   await addActivity(itemData);
   console.log('Item added');
