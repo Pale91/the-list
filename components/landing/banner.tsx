@@ -1,12 +1,9 @@
 import React from 'react';
-import { storage } from '@/infrastructure/firebase';
-import { ref, getDownloadURL } from 'firebase/storage';
 import Image from 'next/image';
+import { getImageUrl } from '@/repositories/activity/files-repository';
 
 export default async function Banner() {
-  const imgUrlDesktop = await getDownloadURL(
-    ref(storage, 'landing-dunas-side.jpg')
-  );
+  const imgUrlDesktop = await getImageUrl('landing-dunas-side.jpg');
 
   return (
     <div className="w-full relative h-96">

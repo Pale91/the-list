@@ -11,10 +11,10 @@ const activityStateSchema = z.nativeEnum(ActivityState);
 
 const ActivitySchema = z.object({
   id: z.string(),
-  name: z.string().max(30, 'Name cannot be exceed 30 characters long'),
+  name: z.string().max(30, 'Name cannot exceed 30 characters long'),
   description: z
     .string()
-    .max(50, 'Description cannot be exceed 50 characters')
+    .max(50, 'Description cannot exceed 50 characters long')
     .nullable()
     .default(null),
   location: z
@@ -32,7 +32,8 @@ const ActivitySchema = z.object({
   creationDate: z.date(),
   completionDate: z.date().nullable().default(null),
   referUserId: z.string().nullable().default(null),
-  votes: z.number().default(0)
+  votes: z.number().default(0),
+  image: z.string().nullable().default(null)
 });
 
 export type Activity = z.infer<typeof ActivitySchema>;

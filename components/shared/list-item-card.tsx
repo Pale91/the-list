@@ -24,7 +24,7 @@ export function ListItemCard({
           src={imageUrl}
           alt={`#${numberInList} ${name}`}
           fill
-          className="object-fill"
+          className="object-cover"
           sizes="100%"
         />
       </figure>

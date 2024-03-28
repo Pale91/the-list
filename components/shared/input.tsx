@@ -1,16 +1,27 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { HTMLInputTypeAttribute, forwardRef } from 'react';
 
-export default function Input({
-  label,
-  containerClassName,
-  type,
-  ...inputProps
-}: React.InputHTMLAttributes<HTMLInputElement> & {
+const classNameByType: { [key: string]: string } = {
+  text: 'input input-bordered',
+  file: 'file-input file-input-bordered'
+};
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   containerClassName?: string;
-  type?: React.HTMLInputTypeAttribute;
-}) {
+  type?: HTMLInputTypeAttribute;
+  error?: string;
+}
+
+const Input = forwardRef(function Input(
+  props: InputProps,
+  ref: React.Ref<HTMLInputElement>
+) {
+  const { label, containerClassName, type, error, ...inputProps } = props;
+
+  const inputClassName =
+    classNameByType[type ?? 'text'] ?? classNameByType.text;
+
   return (
     <label className={clsx('form-control w-full max-w-xs', containerClassName)}>
       <div className="label">
@@ -19,8 +30,17 @@ export default function Input({
       <input
         {...inputProps}
         type={type ?? 'text'}
-        className="input input-bordered w-full max-w-xs"
+        className={clsx(
+          inputClassName,
+          'w-full',
+          error !== undefined && 'input-error',
+          inputProps.className
+        )}
+        ref={ref}
       />
+      {error && <span className="text-xs text-error">{error}</span>}
     </label>
   );
-}
+});
+
+export default Input;

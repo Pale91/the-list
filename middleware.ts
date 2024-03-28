@@ -1,7 +1,7 @@
 import { withAuth } from 'next-auth/middleware';
 import { isUserAdmin } from './infrastructure/roles';
 
-const adminRoutes = ['/desires/create'];
+const adminRoutes: string[] = [];
 
 export default withAuth({
   callbacks: {
