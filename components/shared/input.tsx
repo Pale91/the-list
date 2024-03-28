@@ -13,7 +13,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-const Input = forwardRef(function (
+const Input = forwardRef(function Input(
   props: InputProps,
   ref: React.Ref<HTMLInputElement>
 ) {

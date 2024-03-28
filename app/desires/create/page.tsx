@@ -17,13 +17,14 @@ export default function CreateDesire() {
   const { formState, onChange } = useFormUpdater();
   const imageRef = useRef<HTMLInputElement>(null);
 
+  const file: File | undefined = imageRef.current?.files?.[0];
   const loadedImage = useMemo(() => {
-    if (imageRef.current?.files?.[0] === undefined) {
+    if (file === undefined) {
       return defaultImage;
     }
 
-    return URL.createObjectURL(imageRef.current?.files?.[0]);
-  }, [formState['picture']]);
+    return URL.createObjectURL(file);
+  }, [file]);
 
   useEffect(() => {
     if (imageRef.current === undefined || imageRef.current === null) {
