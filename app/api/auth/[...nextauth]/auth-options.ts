@@ -8,6 +8,9 @@ export const authOptions: AuthOptions = {
   session: {
     strategy: 'jwt'
   },
+  session: {
+    strategy: 'jwt'
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_OAUTH_CLIENT_ID!,
@@ -44,7 +47,16 @@ export const authOptions: AuthOptions = {
         token.role = user.role;
       }
       return token;
+    },
+    jwt({ token, user }) {
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
     }
+  },
+  // KEEP IN SYNC WITH middleware.ts
+  pages: { signIn: '/auth/signin' }
   },
   // KEEP IN SYNC WITH middleware.ts
   pages: { signIn: '/auth/signin' }
